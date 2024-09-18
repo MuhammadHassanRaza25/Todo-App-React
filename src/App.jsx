@@ -35,7 +35,7 @@ let editTodo = (id)=>{
  setTodos(remainingTodos);
  setEditBtn(true)
 }
-console.log(editBtn);
+// console.log(editBtn);
 
   return (
     <>   
