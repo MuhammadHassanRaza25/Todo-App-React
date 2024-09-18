@@ -2,11 +2,11 @@ import { useState } from 'react'
 import './App.css'
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
-import Swal from 'sweetalert2'
 
 function App() {
 const [todo, setTodo] = useState('')
 const [todos, setTodos] = useState([])
+const [editBtn, setEditBtn] = useState(false)
 
 // add todo function
 let addBtn = ()=>{
@@ -16,6 +16,7 @@ let addBtn = ()=>{
   }]
   setTodos([...allTodosarray])
   setTodo('')
+  setEditBtn(false)
 }
 // summary: new array bangaya or usmy pichle sary todos agaye or hamny 1 or new todo add kardia. or setTodos main push krdia.
 
@@ -26,20 +27,15 @@ let delTodo = (id)=>{
 }
 
 // edit todo function
-let editTodo = ()=>{
-const editVal = Swal.fire({
-  title: "Edit Your Todo",
-  input: "text",
-  inputPlaceholder: 'Enter Todo',
-  showCancelButton: true,
-  confirmButtonColor: "#3a47d5",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Edit Todo"
-}) 
-const editedVal = editVal.value
-console.log(editedVal)
-
+let editTodo = (id)=>{
+ let editTodo = todos.find((data)=> data.id === id)   //is se edit pe click karne se todo or uski id mili h.
+ setTodo(editTodo.todo)         //get todo value & set to input.
+ 
+ let remainingTodos = todos.filter((data) => data.id !== id);
+ setTodos(remainingTodos);
+ setEditBtn(true)
 }
+console.log(editBtn);
 
   return (
     <>   
@@ -52,6 +48,7 @@ console.log(editedVal)
        value={todo} 
        onChange={(e)=> setTodo(e.target.value)} 
        onClick={addBtn} 
+       showEditBtn={editBtn}
        />
        
        {todos.map((data)=>(
@@ -59,7 +56,7 @@ console.log(editedVal)
         todos={data.todo} 
         id={data.id} 
         deleteFunction={()=> delTodo(data.id)}
-        editFunction={()=> editTodo()}
+        editFunction={()=> editTodo(data.id)}
         />
        ))}
      </div>
