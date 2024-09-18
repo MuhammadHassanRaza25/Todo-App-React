@@ -2,12 +2,13 @@ import { useState } from 'react'
 import './App.css'
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
+import Swal from 'sweetalert2'
 
 function App() {
 const [todo, setTodo] = useState('')
 const [todos, setTodos] = useState([])
 
-
+// add todo function
 let addBtn = ()=>{
   const allTodosarray = [...todos, {
     todo,
@@ -18,6 +19,27 @@ let addBtn = ()=>{
 }
 // summary: new array bangaya or usmy pichle sary todos agaye or hamny 1 or new todo add kardia. or setTodos main push krdia.
 
+// delete todo function  //niche map main se id pas ki h. 
+let delTodo = (id)=>{
+  let del = todos.filter((abc)=> abc.id !== id);
+  setTodos([...del])
+}
+
+// edit todo function
+let editTodo = ()=>{
+const editVal = Swal.fire({
+  title: "Edit Your Todo",
+  input: "text",
+  inputPlaceholder: 'Enter Todo',
+  showCancelButton: true,
+  confirmButtonColor: "#3a47d5",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Edit Todo"
+}) 
+const editedVal = editVal.value
+console.log(editedVal)
+
+}
 
   return (
     <>   
@@ -33,7 +55,12 @@ let addBtn = ()=>{
        />
        
        {todos.map((data)=>(
-        <TodoList todos={data.todo} id={data.id}/>
+        <TodoList 
+        todos={data.todo} 
+        id={data.id} 
+        deleteFunction={()=> delTodo(data.id)}
+        editFunction={()=> editTodo()}
+        />
        ))}
      </div>
  

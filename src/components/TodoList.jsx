@@ -1,5 +1,5 @@
-function TodoList({ todos, id }){
-console.log(id);
+function TodoList({ todos, id, deleteFunction, editFunction }){
+// console.log(id);
 
     return(
     <>
@@ -7,8 +7,10 @@ console.log(id);
         <h1 className="font-semibold text-xl flex-1 text-start">{todos}</h1>
         
         <span>
-          <button className="btn font-semibold border-2 border-purple-600 bg-purple-600 text-white w-16 rounded-lg p-1 mr-2 hover:bg-white hover:text-purple-600">Edit</button>
-          <button className="btn font-semibold border-2 border-purple-600 bg-purple-600 text-white w-20 rounded-lg p-1 hover:bg-white hover:text-purple-600">Delete</button>
+          <button className="btn font-semibold border-2 border-purple-600 bg-purple-600 text-white w-16 rounded-lg p-1 mr-2 hover:bg-white hover:text-purple-600"
+          onClick={editFunction}>Edit</button>
+          <button className="btn font-semibold border-2 border-purple-600 bg-purple-600 text-white w-20 rounded-lg p-1 hover:bg-white hover:text-purple-600"
+          onClick={deleteFunction}>Delete</button>
         </span>
     </div>
     </>
