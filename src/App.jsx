@@ -40,7 +40,6 @@ let editTodo = (id)=>{
  setTodos(remainingTodos);
  setEditBtn(true)
 }
-// console.log(editBtn);
 
   return (
     <>   
