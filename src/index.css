@@ -35,6 +35,7 @@ body {
   font-family:sans-serif;
 }
 
+/* light theme box */
 .box{
   height: 80vh;
   width:50vw;
@@ -46,6 +47,24 @@ body {
 }
 .box::-webkit-scrollbar{
   display: none;
+}
+
+/* dark theme box */
+.boxDark{
+  height: 80vh;
+  width:50vw;
+  background-color: black;
+  border:1px solid lightgrey;
+  border-radius: 10px;
+  padding: 17px;
+  overflow: scroll;
+}
+.boxDark::-webkit-scrollbar{
+  display: none;
+}
+/* dark theme list */
+.darkList{
+  border:1px solid lightgrey;
 }
 
 .todoInput{
@@ -66,9 +85,11 @@ body {
   transition: all 0.5s;
 }
 
-
 @media(max-width:700px){
   .box{
+    width:90vw;
+  }
+  .boxDark{
     width:90vw;
   }
   .todoInput{
@@ -80,6 +101,9 @@ body {
     font-size: 22px;
   }
   .box{
+    width:90vw;
+  }
+  .boxDark{
     width:90vw;
   }
   .todoInput{

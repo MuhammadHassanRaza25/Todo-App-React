@@ -1,9 +1,16 @@
-function TodoList({ todos, id, deleteFunction, editFunction }){
-// console.log(id);
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
-    return(
+function TodoList({ todos, id, deleteFunction, editFunction }){
+
+//using context
+const {theme, setTheme} = useContext(ThemeContext)
+
+  return(
     <>
-    <div key={id} className="mt-3 flex justify-between items-center px-3 py-2 bg-gray-100 rounded-md">
+    {theme == 'light' ?
+    // light theme
+    <div key={id} className="mt-5 flex justify-between items-center px-3 py-2 bg-gray-100 border-2 border-gray-100 rounded-xl">
         <h1 className="font-semibold text-xl flex-1 text-start">{todos}</h1>
         
         <span>
@@ -13,8 +20,20 @@ function TodoList({ todos, id, deleteFunction, editFunction }){
           onClick={deleteFunction}>Delete</button>
         </span>
     </div>
+    :
+    // dark theme
+    <div key={id} className="darkList mt-6 flex justify-between items-center px-3 py-2 bg-black text-white rounded-xl">
+        <h1 className="font-semibold text-xl flex-1 text-start">{todos}</h1>
+        
+        <span>
+          <button className="btn font-semibold border-2 border-purple-600 bg-purple-600 text-white w-16 rounded-lg p-1 mr-2 hover:bg-white hover:text-purple-600"
+          onClick={editFunction}>Edit</button>
+          <button className="btn font-semibold border-2 border-purple-600 bg-purple-600 text-white w-20 rounded-lg p-1 hover:bg-white hover:text-purple-600"
+          onClick={deleteFunction}>Delete</button>
+        </span>
+    </div>}
     </>
-    )
+  )
 }
 
 export default TodoList;
