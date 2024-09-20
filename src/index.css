@@ -57,7 +57,6 @@ body {
   border-radius: 10px;
   padding: 17px;
   overflow: scroll;
-  box-shadow: 0px 0px 5px white, 0px 0px 6px white;
 }
 .boxDark::-webkit-scrollbar{
   display: none;

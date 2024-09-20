@@ -19,7 +19,7 @@ const {theme, setTheme} = useContext(ThemeContext)
   ? 
   document.getElementById('root').style.backgroundColor = '#f9fafb'
   :
-  document.getElementById('root').style.backgroundColor = 'black'
+  document.getElementById('root').style.backgroundColor = 'dimgrey'
 }
 
 // Add todo function
