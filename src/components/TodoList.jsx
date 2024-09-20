@@ -10,8 +10,8 @@ const {theme, setTheme} = useContext(ThemeContext)
     <>
     {theme == 'light' ?
     // light theme
-    <div key={id} className="mt-5 flex justify-between items-center px-3 py-2 bg-gray-100 border-2 border-gray-100 rounded-xl">
-        <h1 className="font-semibold text-xl flex-1 text-start">{todos}</h1>
+    <div key={id} className="listBox mt-5 flex justify-between items-center px-3 py-2 bg-gray-100 border-2 border-gray-100 rounded-xl">
+        <h1 className="todo font-semibold text-xl flex-1 text-start">{todos}</h1>
         
         <span>
           <button className="btn font-semibold border-2 border-purple-600 bg-purple-600 text-white w-16 rounded-lg p-1 mr-2 hover:bg-white hover:text-purple-600"
@@ -22,8 +22,8 @@ const {theme, setTheme} = useContext(ThemeContext)
     </div>
     :
     // dark theme
-    <div key={id} className="darkList mt-6 flex justify-between items-center px-3 py-2 bg-black text-white rounded-xl">
-        <h1 className="font-semibold text-xl flex-1 text-start">{todos}</h1>
+    <div key={id} className="listBox darkList mt-6 flex justify-between items-center px-3 py-2 bg-black text-white rounded-xl">
+        <h1 className="todo font-semibold text-xl flex-1 text-start">{todos}</h1>
         
         <span>
           <button className="btn font-semibold border-2 border-purple-600 bg-purple-600 text-white w-16 rounded-lg p-1 mr-2 hover:bg-white hover:text-purple-600"
