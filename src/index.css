@@ -38,7 +38,7 @@ body {
 /* light theme box */
 .box{
   height: 80vh;
-  width:50vw;
+  width:55vw;
   background-color: white;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 3px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -52,12 +52,12 @@ body {
 /* dark theme box */
 .boxDark{
   height: 80vh;
-  width:50vw;
+  width:55vw;
   background-color: black;
-  border:2px solid lightgrey;
   border-radius: 10px;
   padding: 17px;
   overflow: scroll;
+  box-shadow: 0px 0px 5px white, 0px 0px 6px white;
 }
 .boxDark::-webkit-scrollbar{
   display: none;
@@ -68,7 +68,7 @@ body {
 }
 
 .todoInput{
-  width: 39vw;
+  width: 44vw;
   border: 2px solid lightgrey;
   transition: all 0.5s;
 }
