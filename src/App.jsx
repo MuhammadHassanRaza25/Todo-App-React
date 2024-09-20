@@ -129,7 +129,12 @@ let editTodo = (id)=>{
      {/* Todo List Box ⬆ */}
 
       {/* Programmer Name */}
-      <h4 className='mt-3 text-xs text-gray-400 font-bold'>Made By Muhammad Hassan Raza</h4> 
+      {theme == "light"
+        ? 
+        <h4 className='mt-3 text-xs text-gray-400 font-bold'>Made By Muhammad Hassan Raza</h4> 
+        :
+        <h4 className='mt-3 text-xs text-gray-300 font-bold'>Made By Muhammad Hassan Raza</h4> 
+      }
     </>
   )
 }
