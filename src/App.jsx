@@ -8,6 +8,7 @@ import { ThemeContext } from './context/ThemeContext';
 function App() {
 const [todo, setTodo] = useState('')
 const [todos, setTodos] = useState([])
+const [filter, setFilter] = useState('All')  //for tasks all/complete/inComplete
 const [editBtn, setEditBtn] = useState(false)
 
 // Using context for light/dark mode
@@ -26,7 +27,8 @@ const {theme, setTheme} = useContext(ThemeContext)
 let addBtn = ()=>{
   const allTodosarray = [...todos, {
     todo,
-    id: Date.now()
+    id: Date.now(),
+    completed: false
   }]
   setTodos([...allTodosarray])
   setTodo('')
@@ -49,6 +51,31 @@ let editTodo = (id)=>{
  setTodos(remainingTodos);
  setEditBtn(true)
 }
+
+// Click on Todo Function 
+let clickTodo = (id)=>{
+  // console.log('user Clicked Todo :)', id);
+  let allTodosArr = [...todos]
+  let todoIndx = allTodosArr.findIndex((data)=> data.id == id)
+  allTodosArr[todoIndx].completed =!allTodosArr[todoIndx].completed
+  console.log('todo index on Click==>', todoIndx);
+  console.log('todos array on Click==>', allTodosArr);
+  setTodos([...allTodosArr])
+}
+
+// Filter Todo Tasks
+// let filterTodos = todos.filter((data)=>{
+//    if(filter == 'All'){
+//      return true
+//    }
+//   if(filter == 'Completed' && data.completed){
+//      return true
+//    }
+//    else if(filter == 'InCompleted' && data.completed){
+//     return true
+//   }
+// })
+
 
   return (
     <>   
@@ -93,7 +120,10 @@ let editTodo = (id)=>{
           showEditBtn={editBtn}
           />
 
-          <FilterButtons/>
+          <FilterButtons 
+          filter={filter}
+          setFilter={setFilter}
+          />
           
           {todos.map((data)=>(
            <TodoList 
@@ -101,6 +131,8 @@ let editTodo = (id)=>{
            id={data.id} 
            deleteFunction={()=> delTodo(data.id)}
            editFunction={()=> editTodo(data.id)}
+           clickTodo={clickTodo}
+           isTodoComplete={data.completed}    //completed true or false value ki help se linethrough wala style kia h.
            />
           ))}
         </div>
@@ -122,6 +154,8 @@ let editTodo = (id)=>{
            id={data.id} 
            deleteFunction={()=> delTodo(data.id)}
            editFunction={()=> editTodo(data.id)}
+           clickTodo={clickTodo}
+           isTodoComplete={data.completed}   //completed true or false value ki help se linethrough wala style kia h.
            />
           ))}
         </div>
