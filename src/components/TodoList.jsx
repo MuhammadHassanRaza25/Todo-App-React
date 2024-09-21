@@ -4,7 +4,7 @@ import { ThemeContext } from '../context/ThemeContext';
 function TodoList({ todos, id, deleteFunction, editFunction, clickTodo, isTodoComplete }){
 // console.log('Todo Completed value=>', isTodoComplete);
   
-//using context
+// Using context for light/dark mode
 const {theme, setTheme} = useContext(ThemeContext)
 
   return(

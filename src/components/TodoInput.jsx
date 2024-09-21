@@ -3,7 +3,7 @@ import { ThemeContext } from '../context/ThemeContext';
 
 function TodoInput({onChange, onClick, value, showEditBtn}){
     
-//using context
+// Using context for light/dark mode
 const {theme, setTheme} = useContext(ThemeContext)
 
 return(

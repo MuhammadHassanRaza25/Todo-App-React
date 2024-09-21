@@ -4,6 +4,7 @@ import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import FilterButtons from './components/FilterButtons'
 import { ThemeContext } from './context/ThemeContext';
+import { useEffect } from 'react';
 
 function App() {
 const [todo, setTodo] = useState('')
@@ -57,25 +58,25 @@ let clickTodo = (id)=>{
   // console.log('user Clicked Todo :)', id);
   let allTodosArr = [...todos]
   let todoIndx = allTodosArr.findIndex((data)=> data.id == id)
-  allTodosArr[todoIndx].completed =!allTodosArr[todoIndx].completed
+  allTodosArr[todoIndx].completed = !allTodosArr[todoIndx].completed
   console.log('todo index on Click==>', todoIndx);
   console.log('todos array on Click==>', allTodosArr);
   setTodos([...allTodosArr])
 }
 
 // Filter Todo Tasks
-// let filterTodos = todos.filter((data)=>{
-//    if(filter == 'All'){
-//      return true
-//    }
-//   if(filter == 'Completed' && data.completed){
-//      return true
-//    }
-//    else if(filter == 'InCompleted' && data.completed){
-//     return true
-//   }
-// })
-
+let filteredTodos = todos.filter((data)=>{
+   if(filter == 'All'){
+     return true
+   }
+  if(filter == 'Completed' && data.completed){
+     return true
+   }
+   else if(filter == 'InCompleted' && !data.completed){
+    return true
+  }
+})
+// console.log(filteredTodos);
 
   return (
     <>   
@@ -125,7 +126,7 @@ let clickTodo = (id)=>{
           setFilter={setFilter}
           />
           
-          {todos.map((data)=>(
+          {filteredTodos.map((data)=>(  
            <TodoList 
            todos={data.todo} 
            id={data.id} 
@@ -146,9 +147,12 @@ let clickTodo = (id)=>{
           showEditBtn={editBtn}
           />
           
-          <FilterButtons/>
+          <FilterButtons 
+          filter={filter}
+          setFilter={setFilter}
+          />
           
-          {todos.map((data)=>(
+          {filteredTodos.map((data)=>(
            <TodoList 
            todos={data.todo} 
            id={data.id} 
