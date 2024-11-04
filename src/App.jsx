@@ -84,7 +84,7 @@ let filteredTodos = todos.filter((data)=>{
     {theme == 'light' 
      ? 
       // light theme
-      <h1 className='header flex justify-between p-3.5 bg-white border-b-2 text-3xl font-semibold -mt-4 mb-5 w-full'><span>Todo <span className='text-purple-600'>App</span></span> 
+      <h1 className='header flex justify-between p-3.5 py-3 px-7 bg-white border-b-2 text-3xl font-semibold -mt-4 mb-5 w-full'><span>Todo <span className='text-purple-600'>App</span></span> 
       <button className='btn text-lg font-semibold border-2 border-purple-600 bg-purple-600 text-white w-24 rounded-lg p-0.5 hover:bg-white hover:text-purple-600' 
        onClick={()=>{
        if(theme === 'light'){
@@ -96,7 +96,7 @@ let filteredTodos = todos.filter((data)=>{
       }}>Dark 🌘</button></h1>
      : 
       // dark theme
-      <h1 className='header flex justify-between p-3.5 bg-black text-white border-b-2 text-3xl font-semibold -mt-4 mb-5 w-full'><span>Todo <span className='text-purple-600'>App</span></span> 
+      <h1 className='header flex justify-between p-3.5 py-3 px-7 bg-black text-white border-b-2 text-3xl font-semibold -mt-4 mb-5 w-full'><span>Todo <span className='text-purple-600'>App</span></span> 
       <button className='btn text-lg font-semibold border-2 border-purple-600 bg-purple-600 text-white w-24 rounded-lg p-0.5 hover:text-purple-600 hover:bg-white' 
        onClick={()=>{
         if(theme === 'light'){
